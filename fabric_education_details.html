@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELÉGANCE | Fabric Guide &amp; Technical Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#5c1800",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#454652",
+                    "error": "#ba1a1a",
+                    "primary": "#000666",
+                    "on-secondary-container": "#56656e",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-container": "#e17c5a",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "secondary-fixed-dim": "#bac9d3",
+                    "on-primary-container": "#8690ee",
+                    "primary-fixed": "#e0e0ff",
+                    "on-tertiary-fixed": "#390c00",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-error-container": "#93000a",
+                    "outline": "#767683",
+                    "on-secondary-fixed": "#0f1d25",
+                    "surface-container": "#edeeef",
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "surface-dim": "#d9dadb",
+                    "on-surface": "#191c1d",
+                    "on-primary-fixed-variant": "#343d96",
+                    "background": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#7b2e12",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-fixed": "#000767",
+                    "inverse-primary": "#bdc2ff",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#d3e2ed",
+                    "surface-bright": "#f8f9fa",
+                    "tertiary": "#380b00",
+                    "inverse-surface": "#2e3132",
+                    "on-background": "#191c1d",
+                    "surface-tint": "#4c56af",
+                    "outline-variant": "#c6c5d4",
+                    "surface-variant": "#e1e3e4",
+                    "secondary": "#526069",
+                    "secondary-fixed": "#d6e5ef",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-container": "#1a237e",
+                    "on-secondary-fixed-variant": "#3b4951"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-md": "1.5rem",
+                    "space-lg": "2.5rem",
+                    "margin-desktop": "48px",
+                    "space-2xl": "6rem",
+                    "gutter": "24px",
+                    "space-sm": "1rem",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "space-xs": "0.5rem",
+                    "space-xl": "4rem",
+                    "space-xxs": "0.25rem"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .fabric-grid-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .fabric-grid-scrollbar::-webkit-scrollbar-thumb {
+            background: #000666;
+            border-radius: 10px;
+        }
+        .progress-bar-transition {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-space-md max-w-container-max mx-auto bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="font-display-lg text-display-lg tracking-tighter text-primary">ELÉGANCE</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="#">Men</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="#">Women</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Fabric Guide</a>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-transform duration-200" data-icon="shopping_cart">shopping_cart</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-95 transition-transform duration-200" data-icon="person">person</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-space-2xl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<header class="mb-space-xl max-w-3xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-space-sm">Textile Intelligence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The foundation of every masterpiece is its material. Explore our curated library of premium fabrics, decoded for your lifestyle and comfort.</p>
+</header>
+<!-- Fabric Selection Grid (Horizontal Scroll on Mobile, Bento Grid on Desktop) -->
+<section class="mb-space-xl">
+<div class="flex items-center justify-between mb-space-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Select Fabric Type</h2>
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">10 Materials Found</span>
+</div>
+<div class="flex md:grid md:grid-cols-5 lg:grid-cols-5 gap-space-sm overflow-x-auto fabric-grid-scrollbar pb-4 md:pb-0 snap-x">
+<!-- Fabric Cards (Cotton is active by default) -->
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-lowest rounded-xl border-2 border-primary transition-all duration-300 snap-start text-left" onclick="updateFabric('cotton')">
+<span class="material-symbols-outlined text-primary mb-2 block" data-icon="opacity">opacity</span>
+<span class="font-label-md text-label-md text-primary block">Cotton</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('silk')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="flare">flare</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Silk</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('linen')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="eco">eco</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Linen</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('wool')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="ac_unit">ac_unit</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Wool</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('denim')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="grid_4x4">grid_4x4</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Denim</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('knit')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="texture">texture</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Knit</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('satin')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="shimmer">shower</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Satin</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('rayon')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="waves">waves</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Rayon</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('chiffon')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="air">air</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Chiffon</span>
+</button>
+<button class="fabric-card group flex-shrink-0 w-40 md:w-auto p-space-md bg-surface-container-low hover:bg-surface-container-high rounded-xl border-2 border-transparent transition-all duration-300 snap-start text-left" onclick="updateFabric('polyester')">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 block" data-icon="biotech">biotech</span>
+<span class="font-label-md text-label-md text-on-surface-variant block">Polyester</span>
+</button>
+</div>
+</section>
+<!-- Detailed Content Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: High Quality Visual & Care (4 cols) -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A macro photograph of premium Egyptian cotton fibers, showcasing detailed weave patterns and soft textural depth. The lighting is bright and ethereal, emphasizing the purity and organic quality of the fabric in a minimalist, luxury light-mode setting. Neutral white and soft cream tones dominate the composition." id="fabric-image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwFGt-y0YOj0wB_ztgEwx7of32fJ6wKotnstvz18JGH-IsUrbEdvpzM668wM5DWUvFAzZkC4ge4gctVdzYst84exPla46lOyQ4Sx4QhsEEdatsTnlCXH9jDZVr8JZ3RUg3N897GFoJeZ_5uzsgqtlZnoIqFEgY7K4FmB8KC4vNgmmgGmi1UtX7k44AcUT1oNrRdfo67m2qKGE7DeE5yvX2u7_TnCbCjw96M6M-vEMHW9HCbOZNp4493VJTc_svNMdPiJkUAqZ5rlKI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md">
+<span class="bg-white/20 backdrop-blur-md text-white px-space-sm py-1 rounded-full text-label-md font-label-md" id="fabric-badge">100% Organic</span>
+</div>
+</div>
+<!-- Care Instructions Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-md flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="wash">wash</span> Care Guide
+                    </h3>
+<ul class="space-y-space-sm text-body-md text-on-surface-variant" id="care-list">
+<li class="flex items-start gap-2"><span class="text-primary font-bold">•</span> Machine wash cold, gentle cycle.</li>
+<li class="flex items-start gap-2"><span class="text-primary font-bold">•</span> Avoid bleach to preserve fibers.</li>
+<li class="flex items-start gap-2"><span class="text-primary font-bold">•</span> Tumble dry low or air dry for longevity.</li>
+<li class="flex items-start gap-2"><span class="text-primary font-bold">•</span> Iron while damp for best results.</li>
+</ul>
+</div>
+</div>
+<!-- Middle/Right: Stats & Pros/Cons (8 cols) -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Technical Stats Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl border border-outline-variant shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-lg">Technical Specifications</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-space-xl gap-y-space-md">
+<!-- Thickness -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Thickness</span>
+<span class="text-primary" id="stat-thickness-label">Medium</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-thickness-bar" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Stretch -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Stretch</span>
+<span class="text-primary" id="stat-stretch-label">Low</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-stretch-bar" style="width: 20%;"></div>
+</div>
+</div>
+<!-- Softness -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Softness</span>
+<span class="text-primary" id="stat-softness-label">High</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-softness-bar" style="width: 85%;"></div>
+</div>
+</div>
+<!-- Breathability -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Breathability</span>
+<span class="text-primary" id="stat-breath-label">Excellent</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-breath-bar" style="width: 95%;"></div>
+</div>
+</div>
+<!-- Weight -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Weight</span>
+<span class="text-primary" id="stat-weight-label">Lightweight</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-weight-bar" style="width: 30%;"></div>
+</div>
+</div>
+<!-- Opacity -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface">Opacity</span>
+<span class="text-primary" id="stat-opacity-label">Opaque</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full progress-bar-transition" id="stat-opacity-bar" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlights & Pros/Cons Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Highlights -->
+<div class="bg-primary text-white p-space-lg rounded-2xl shadow-lg">
+<h3 class="font-headline-sm text-headline-sm mb-space-md">Key Highlights</h3>
+<p class="font-body-md text-on-primary-container leading-relaxed mb-space-md" id="fabric-description">
+                            Cotton is the world's most popular natural fiber. Known for its exceptional breathability and soft hand-feel, it's the gold standard for everyday comfort.
+                        </p>
+<div class="inline-flex items-center gap-2 bg-white/10 px-space-sm py-2 rounded-lg border border-white/20" id="weather-tag">
+<span class="material-symbols-outlined" data-icon="thermostat">thermostat</span>
+<span class="text-label-md">Ideal for: Spring/Summer</span>
+</div>
+</div>
+<!-- Pros & Cons -->
+<div class="bg-surface-container p-space-lg rounded-2xl border border-outline-variant">
+<div class="grid grid-cols-1 gap-space-lg">
+<div>
+<h4 class="text-primary font-bold mb-space-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-green-600" data-icon="add_circle">add_circle</span> Advantages
+                                </h4>
+<ul class="space-y-1 text-on-surface-variant text-body-md" id="pros-list">
+<li>Hypoallergenic &amp; skin-friendly</li>
+<li>Highly absorbent</li>
+<li>Durable and strong</li>
+</ul>
+</div>
+<div class="pt-space-sm border-t border-outline-variant">
+<h4 class="text-primary font-bold mb-space-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="remove_circle">remove_circle</span> Considerations
+                                </h4>
+<ul class="space-y-1 text-on-surface-variant text-body-md" id="cons-list">
+<li>Prone to wrinkling</li>
+<li>Can shrink in high heat</li>
+<li>Slow drying time</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-space-xl flex flex-col md:flex-row justify-between items-start gap-gutter bg-surface border-t border-outline-variant">
+<div class="flex flex-col gap-space-sm">
+<div class="font-headline-sm text-headline-sm text-primary">ELÉGANCE</div>
+<p class="text-on-surface-variant text-body-md max-w-xs">Elevating the standards of modern luxury through material excellence and conscious craftsmanship.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-space-xl gap-y-space-md">
+<a class="text-on-surface-variant text-body-md hover:underline hover:text-primary transition-all" href="#">Size Guide</a>
+<a class="text-primary font-bold underline text-body-md" href="#">Fabric Education</a>
+<a class="text-on-surface-variant text-body-md hover:underline hover:text-primary transition-all" href="#">Company Info</a>
+<a class="text-on-surface-variant text-body-md hover:underline hover:text-primary transition-all" href="#">Shipping</a>
+<a class="text-on-surface-variant text-body-md hover:underline hover:text-primary transition-all" href="#">Privacy</a>
+</div>
+<div class="text-on-surface-variant font-body-md pt-space-md md:pt-0">
+            © 2024 ELÉGANCE. All rights reserved.
+        </div>
+</footer>
+<!-- Interactive Script -->
+<script>
+        const fabricData = {
+            cotton: {
+                name: "Cotton",
+                description: "Cotton is the world's most popular natural fiber. Known for its exceptional breathability and soft hand-feel, it's the gold standard for everyday comfort and versatility.",
+                weather: "Spring/Summer",
+                stats: { thickness: 50, stretch: 20, softness: 85, breath: 95, weight: 30, opacity: 80 },
+                pros: ["Hypoallergenic & skin-friendly", "Highly absorbent", "Durable and strong"],
+                cons: ["Prone to wrinkling", "Can shrink in high heat", "Slow drying time"],
+                care: ["Machine wash cold, gentle cycle.", "Avoid bleach to preserve fibers.", "Tumble dry low or air dry.", "Iron while damp for best results."],
+                badge: "100% Organic",
+                imgAlt: "A macro photograph of premium Egyptian cotton fibers, showcasing detailed weave patterns and soft textural depth. The lighting is bright and ethereal, emphasizing the purity and organic quality of the fabric in a minimalist, luxury light-mode setting. Neutral white and soft cream tones dominate the composition."
+            },
+            silk: {
+                name: "Silk",
+                description: "A natural protein fiber, silk is the pinnacle of luxury. It offers a unique natural shimmer and incredible temperature regulation properties, keeping you cool in summer and warm in winter.",
+                weather: "All Seasons",
+                stats: { thickness: 15, stretch: 10, softness: 100, breath: 90, weight: 10, opacity: 40 },
+                pros: ["Natural protein structure", "Lustrous appearance", "Temperature regulating"],
+                cons: ["Extremely delicate", "Prone to water stains", "Requires professional care"],
+                care: ["Hand wash with silk-safe detergent.", "Never wring or twist.", "Dry flat in shade.", "Steam or iron on lowest setting."],
+                badge: "Pure Mulberry",
+                imgAlt: "Macro close-up of flowing Mulberry silk fabric in a soft champagne hue. The light catches the subtle sheen of the fabric, creating elegant highlights and deep, soft shadows. The setting is luxurious and minimalist, focusing on the liquid-like movement of the textile."
+            },
+            linen: {
+                name: "Linen",
+                description: "Made from flax fibers, linen is prized for its prehistoric roots and unmatched cooling properties. Its stiff handle and natural slub texture give it a sophisticated, relaxed aesthetic.",
+                weather: "Hot/Tropical",
+                stats: { thickness: 40, stretch: 5, softness: 45, breath: 100, weight: 35, opacity: 60 },
+                pros: ["Fastest drying natural fiber", "Sustainable and biodegradable", "Gains character with age"],
+                cons: ["Wrinkles instantly", "Initial coarse texture", "Poor elastic recovery"],
+                care: ["Machine wash warm.", "Do not over-dry in machine.", "Iron on high while very damp.", "Store in a cool, dry place."],
+                badge: "European Flax",
+                imgAlt: "Extreme detail of woven linen fabric showing the natural flax slubs and open weave structure. The lighting is warm and natural, evoking a summer morning in a Mediterranean villa. The color palette is earthy and organic, featuring oatmeal and bone whites."
+            },
+            wool: {
+                name: "Wool",
+                description: "A versatile animal fiber that excels in insulation. Merino and Cashmere varieties offer incredible softness and moisture-wicking capabilities for both activewear and formal tailoring.",
+                weather: "Fall/Winter",
+                stats: { thickness: 80, stretch: 40, softness: 75, breath: 70, weight: 70, opacity: 95 },
+                pros: ["Natural insulation", "Flame resistant", "Odor resistant"],
+                cons: ["Can be itchy (low grades)", "Susceptible to moth damage", "Prone to pilling"],
+                care: ["Spot clean whenever possible.", "Hand wash cold only.", "Dry flat to prevent stretching.", "Store with cedar or lavender."],
+                badge: "Responsible Wool Standard",
+                imgAlt: "Close-up of fine merino wool knit, showing the intricate interlocking loops and soft fuzzy surface. The lighting is soft and directional, highlighting the loft and warmth of the material. The aesthetic is cozy yet sophisticated, in a deep charcoal grey."
+            },
+            denim: {
+                name: "Denim",
+                description: "A sturdy cotton warp-faced textile. Its iconic twill weave creates the rugged durability and unique fading characteristics that have made it a global staple for over a century.",
+                weather: "Fall/Spring",
+                stats: { thickness: 90, stretch: 15, softness: 30, breath: 40, weight: 85, opacity: 100 },
+                pros: ["Extremely high durability", "Timeless style", "Protective and heavy"],
+                cons: ["Heavy and bulky", "Dye can bleed initially", "Long break-in period"],
+                care: ["Wash sparingly to preserve fade.", "Wash inside out in cold water.", "Air dry to prevent shrinking.", "Avoid fabric softeners."],
+                badge: "Selvedge Quality",
+                imgAlt: "Macro shot of raw indigo denim, revealing the characteristic diagonal twill lines and white weft threads. The texture is rough and authentic, captured under high-contrast studio lighting that emphasizes the architectural quality of the weave."
+            }
+            // Additional data points would follow same structure...
+        };
+
+        function updateFabric(type) {
+            const data = fabricData[type] || fabricData.cotton;
+            
+            // Update Text
+            document.getElementById('fabric-description').innerText = data.description;
+            document.getElementById('fabric-badge').innerText = data.badge;
+            document.getElementById('weather-tag').querySelector('span:last-child').innerText = `Ideal for: ${data.weather}`;
+            
+            // Update Image (Update data-alt and background)
+            const imgEl = document.getElementById('fabric-image');
+            imgEl.setAttribute('data-alt', data.imgAlt);
+            imgEl.style.backgroundImage = "url('placeholder')"; // In real app, change URL
+
+            // Update Stats
+            Object.keys(data.stats).forEach(stat => {
+                const bar = document.getElementById(`stat-${stat}-bar`);
+                const label = document.getElementById(`stat-${stat}-label`);
+                if(bar) bar.style.width = data.stats[stat] + '%';
+                // Simple label logic
+                if(label) {
+                    const val = data.stats[stat];
+                    if(val > 80) label.innerText = "Exceptional";
+                    else if(val > 60) label.innerText = "High";
+                    else if(val > 40) label.innerText = "Medium";
+                    else label.innerText = "Low";
+                }
+            });
+
+            // Update Pros/Cons
+            const prosList = document.getElementById('pros-list');
+            prosList.innerHTML = data.pros.map(p => `<li>${p}</li>`).join('');
+            const consList = document.getElementById('cons-list');
+            consList.innerHTML = data.cons.map(c => `<li>${c}</li>`).join('');
+
+            // Update Care
+            const careList = document.getElementById('care-list');
+            careList.innerHTML = data.care.map(c => `<li class="flex items-start gap-2"><span class="text-primary font-bold">•</span> ${c}</li>`).join('');
+
+            // Update Navigation State
+            document.querySelectorAll('.fabric-card').forEach(card => {
+                const label = card.querySelector('span:last-child').innerText.toLowerCase();
+                if(label === type) {
+                    card.classList.add('border-primary', 'bg-surface-container-lowest');
+                    card.classList.remove('border-transparent', 'bg-surface-container-low');
+                    card.querySelector('span:first-child').classList.add('text-primary');
+                    card.querySelector('span:last-child').classList.add('text-primary');
+                } else {
+                    card.classList.remove('border-primary', 'bg-surface-container-lowest');
+                    card.classList.add('border-transparent', 'bg-surface-container-low');
+                    card.querySelector('span:first-child').classList.remove('text-primary');
+                    card.querySelector('span:last-child').classList.remove('text-primary');
+                }
+            });
+        }
+    </script>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-surface/90 backdrop-blur-xl border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<div class="flex flex-col items-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-label-md-mobile font-label-md">Shop</span>
+</div>
+<div class="flex flex-col items-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-md-mobile font-label-md">Search</span>
+</div>
+<div class="flex flex-col items-center text-primary font-semibold">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="text-label-md-mobile font-label-md">Guide</span>
+</div>
+<div class="flex flex-col items-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md-mobile font-label-md">Account</span>
+</div>
+</nav>
+</body></html>
